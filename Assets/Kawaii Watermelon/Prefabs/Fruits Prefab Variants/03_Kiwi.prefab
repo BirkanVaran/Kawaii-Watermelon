@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2317496246982704361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8941360138047289422, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: fruitType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292886476792552251, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724917269777513213, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_Radius
+      value: 0.19338228
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724917269777513213, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00052588515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724917269777513213, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0011566348
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875145389899558787, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.227451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875145389899558787, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.95294124
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875145389899558787, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662645154151396864, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_Name
+      value: 03_Kiwi
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789288754537969453, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12c861da4b96701488a148a0480028e8, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f181d9412dd7d154db9c9d9942f7beca, type: 3}
