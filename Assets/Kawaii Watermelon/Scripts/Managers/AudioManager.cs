@@ -9,10 +9,12 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         MergeManager.onMergeProcessed += MergeProcessedCallback;
+        SettingsManager.onSFXValueChanged += SFXValueChangedCallback;
     }
     private void OnDestroy()
     {
         MergeManager.onMergeProcessed -= MergeProcessedCallback;
+        SettingsManager.onSFXValueChanged -= SFXValueChangedCallback;
     }
     // Start is called before the first frame update    
     void Start()
@@ -34,4 +36,9 @@ public class AudioManager : MonoBehaviour
         mergeSource.pitch = Random.Range(0.9f, 1.1f);
         mergeSource.Play();
     }
+    private void SFXValueChangedCallback(bool sfxActive)
+    {
+        mergeSource.mute = !sfxActive;
+    }
+
 }
