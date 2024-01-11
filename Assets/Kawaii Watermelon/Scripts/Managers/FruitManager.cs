@@ -8,8 +8,7 @@ using Random = UnityEngine.Random;
 public class FruitManager : MonoBehaviour
 {
     [Header(" Elements ")]
-    [SerializeField] private Fruit[] fruitPrefabs;
-    [SerializeField] private Fruit[] spawnableFruits;
+    [SerializeField] private SkinDataSO skinData;
     [SerializeField] private Transform fruitsParent;
     [SerializeField] private LineRenderer fruitSpawnLine;
     private Fruit currentFruit;
@@ -31,7 +30,9 @@ public class FruitManager : MonoBehaviour
     private void Awake() //Awake is called before Start method
     {
         MergeManager.onMergeProcessed += MergeProcessedCallback;
+        ShopManager.onSkinSelected += SkinSelectedCallback;
     }
+
     private void OnDestroy()
     {
         MergeManager.onMergeProcessed -= MergeProcessedCallback;
@@ -54,7 +55,10 @@ public class FruitManager : MonoBehaviour
         if (canControl)
             ManagePlayerInput();
     }
-
+    private void SkinSelectedCallback(SkinDataSO skinDataSO)
+    {
+        skinData = skinDataSO;
+    }
     private void ManagePlayerInput()
     {
         if (Input.GetMouseButtonDown(0))
@@ -84,7 +88,7 @@ public class FruitManager : MonoBehaviour
     private void MouseUpCallback()
     {
         HideLine();
-        if(currentFruit != null)
+        if (currentFruit != null)
             currentFruit.EnablePhysics();
 
         canControl = false;
@@ -94,7 +98,7 @@ public class FruitManager : MonoBehaviour
     private void SpawnFruit()
     {
         Vector2 spawnPosition = GetSpawnPosition();
-        Fruit fruitToInstantiate = spawnableFruits[nextFruitIndex];
+        Fruit fruitToInstantiate = skinData.GetSpawnablePrefabs()[nextFruitIndex];
 
         currentFruit = Instantiate(
             fruitToInstantiate,
@@ -106,16 +110,16 @@ public class FruitManager : MonoBehaviour
     }
     private void SetNextFruitIndex()
     {
-        nextFruitIndex = Random.Range(0, spawnableFruits.Length);
+        nextFruitIndex = Random.Range(0, skinData.GetSpawnablePrefabs().Length);
         onNextFruitIndexSet?.Invoke();
     }
     public string GetNextFruitName()
     {
-        return spawnableFruits[nextFruitIndex].name;
+        return skinData.GetSpawnablePrefabs()[nextFruitIndex].name;
     }
     public Sprite GetNextFruitSprite()
     {
-        return spawnableFruits[nextFruitIndex].GetSprite();
+        return skinData.GetSpawnablePrefabs()[nextFruitIndex].GetSprite();
     }
     private Vector2 GetClickedWorldPosition()
     {
@@ -150,11 +154,11 @@ public class FruitManager : MonoBehaviour
     }
     private void MergeProcessedCallback(FruitType fruitType, Vector2 fruitSpawnPos)
     {
-        for (int i = 0; i < fruitPrefabs.Length; i++)
+        for (int i = 0; i < skinData.GetObjectPrefabs().Length; i++)
         {
-            if (fruitPrefabs[i].GetFruitType() == fruitType)
+            if (skinData.GetObjectPrefabs()[i].GetFruitType() == fruitType)
             {
-                SpawnMergedFruit(fruitPrefabs[i], fruitSpawnPos);
+                SpawnMergedFruit(skinData.GetObjectPrefabs()[i], fruitSpawnPos);
                 break;
             }
         }

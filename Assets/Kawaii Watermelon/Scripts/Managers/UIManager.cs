@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject shopPanel;
     private void Awake()
     {
         GameManager.onGameStateChanged += GameStateChangedCallback;
@@ -81,4 +82,6 @@ public class UIManager : MonoBehaviour
     {
         settingsPanel.SetActive(false);
     }
+    public void ShopButtonCallback() => shopPanel.SetActive(true);
+    public void CloseShopPanel() => shopPanel.SetActive(false);
 }
