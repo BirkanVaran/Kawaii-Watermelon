@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 01_Balls
   m_EditorClassIdentifier: 
   name: Balls
+  price: 20
   objectPrefabs:
   - {fileID: 2576216067557751643, guid: c8e75f701d828e34ca148d0dbb2f34bd, type: 3}
   - {fileID: 2576216067557751643, guid: 502861a828656834595b12fbdff7ced2, type: 3}

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ShopManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Transform skinButtonParents;
     [SerializeField] private GameObject purchaseButton;
     [SerializeField] private TextMeshProUGUI skinLabelText;
+    [SerializeField] private TextMeshProUGUI skinPriceText;
 
     [Header("Data")]
     [SerializeField] private SkinDataSO[] skinDataSOs;
@@ -41,7 +43,10 @@ public class ShopManager : MonoBehaviour
     }
     public void PurchaseButtonCallback()
     {
+        CoinManager.instance.AddCoins(-skinDataSOs[lastSelectedSkin].GetPrice());
+
         // Check if we have enough coins
+
         unlockedStates[lastSelectedSkin] = true;
         SaveData();
 
@@ -88,15 +93,20 @@ public class ShopManager : MonoBehaviour
     {
         skinLabelText.text = skinDataSOs[skinButtonIndex].GetName();
     }
-
     private void ManagePurchaseButtonVisibility(int skinButtonIndex)
     {
+        bool canPurchase = CoinManager.instance.CanPurchase(skinDataSOs[lastSelectedSkin].GetPrice());
+        purchaseButton.GetComponent<Button>().interactable = canPurchase;
+       
         purchaseButton.SetActive(!unlockedStates[skinButtonIndex]);
 
         //if (unlockedStates[skinButtonIndex])
         //    purchaseButton.SetActive(false);
         //else
         //    purchaseButton.SetActive(true);
+
+        skinPriceText.text = skinDataSOs[skinButtonIndex].GetPrice().ToString();
+
     }
     private bool IsSkinUnlocked(int skinButtonIndex)
     {
