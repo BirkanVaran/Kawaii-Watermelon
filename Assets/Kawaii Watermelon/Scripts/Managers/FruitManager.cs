@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class FruitManager : MonoBehaviour
 {
+    public static FruitManager instance;
+
     [Header(" Elements ")]
     [SerializeField] private SkinDataSO skinData;
     [SerializeField] private Transform fruitsParent;
@@ -29,6 +31,11 @@ public class FruitManager : MonoBehaviour
     public static Action onNextFruitIndexSet;
     private void Awake() //Awake is called before Start method
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         MergeManager.onMergeProcessed += MergeProcessedCallback;
         ShopManager.onSkinSelected += SkinSelectedCallback;
     }
@@ -75,10 +82,18 @@ public class FruitManager : MonoBehaviour
     }
     private void MouseDownCallback()
     {
+        if (!IsClickDetected())
+            return;
+
         DisplayLine();
         PlaceLineAtClickedPosition();
         SpawnFruit();
         isControlling = true;
+    }
+    private bool IsClickDetected()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        return mousePos.y > Screen.height / 5;
     }
     private void MouseDragCallback()
     {
@@ -120,6 +135,18 @@ public class FruitManager : MonoBehaviour
     public Sprite GetNextFruitSprite()
     {
         return skinData.GetSpawnablePrefabs()[nextFruitIndex].GetSprite();
+    }
+    public Fruit[] GetSmallFruits()
+    {
+        List<Fruit> smallFruits = new List<Fruit>();
+        for (int i = 0; i < fruitsParent.childCount; i++)
+        {
+            Fruit fruit = fruitsParent.GetChild(i).GetComponent<Fruit>();
+            int fruitTypeInt = (int)(fruit.GetFruitType());
+            if (fruitTypeInt < 3)
+                smallFruits.Add(fruit);
+        }
+        return smallFruits.ToArray();
     }
     private Vector2 GetClickedWorldPosition()
     {
