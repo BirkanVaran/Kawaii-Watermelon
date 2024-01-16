@@ -6747,6 +6747,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeSource: {fileID: 565555302}
+  mergeClip:
+  - {fileID: 8300000, guid: dbfb1effcc7bd5f478d6ec34ccba9cf7, type: 3}
+  - {fileID: 8300000, guid: 7d8dbef1978d41d43a57702aa237079f, type: 3}
+  - {fileID: 8300000, guid: 88fc4c1f8887e434391c6c3e611ac9f1, type: 3}
+  - {fileID: 8300000, guid: 1dead8b7958c38d4abc06ab64a382a38, type: 3}
 --- !u!1 &1556014535
 GameObject:
   m_ObjectHideFlags: 0
