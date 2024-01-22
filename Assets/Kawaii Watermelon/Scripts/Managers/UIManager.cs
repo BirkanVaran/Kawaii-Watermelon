@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,27 +12,33 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject mapPanel;
+
+    [Header(" Actions ")]
+    public static Action onMapOpened;
     private void Awake()
     {
         GameManager.onGameStateChanged += GameStateChangedCallback;
+        LevelMapManager.onLevelButtonClicked += LevelButtonCallback;
     }
     private void OnDestroy()
     {
         GameManager.onGameStateChanged -= GameStateChangedCallback;
+        LevelMapManager.onLevelButtonClicked -= LevelButtonCallback;
     }
     // Start is called before the first frame update
     void Start()
     {
-       // SetMenu();
+        // SetMenu();
     }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void GameStateChangedCallback(GameState gameState)
     {
-        switch(gameState)
+        switch (gameState)
         {
             case GameState.Menu:
                 SetMenu();
@@ -52,12 +59,14 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        mapPanel.SetActive(false);
     }
     private void SetGame()
     {
         gamePanel.SetActive(true);
         menuPanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        mapPanel.SetActive(false);
     }
     private void SetGameOver()
     {
@@ -65,7 +74,7 @@ public class UIManager : MonoBehaviour
         menuPanel.SetActive(false);
         gamePanel.SetActive(false);
     }
-    public void PlayButtonCallback()
+    public void LevelButtonCallback()
     {
         GameManager.instance.SetGameState();
         SetGame();
@@ -84,4 +93,10 @@ public class UIManager : MonoBehaviour
     }
     public void ShopButtonCallback() => shopPanel.SetActive(true);
     public void CloseShopPanel() => shopPanel.SetActive(false);
+    public void OpenMap()
+    {
+        mapPanel.SetActive(true);
+        onMapOpened?.Invoke();
+    }
+    public void CloseMap() => mapPanel.SetActive(false);
 }

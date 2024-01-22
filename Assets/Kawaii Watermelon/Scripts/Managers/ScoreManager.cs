@@ -5,6 +5,8 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager instance;
+
     [Header(" Elements ")]
     [SerializeField] private TextMeshProUGUI gameScroeText;
     [SerializeField] private TextMeshProUGUI menuBestScroeText;
@@ -19,6 +21,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+
         LoadData();
         MergeManager.onMergeProcessed += MergeProcessedCallback;
         GameManager.onGameStateChanged += GameStateChangedCallback;
@@ -38,8 +46,10 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameScroeText.text = score.ToString();
+        //gameScroeText.text = score.ToString();
     }
+    public int GetBestScore() => bestScore;
+
     private void GameStateChangedCallback(GameState gameState)
     {
         switch (gameState)
